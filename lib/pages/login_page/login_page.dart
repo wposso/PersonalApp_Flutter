@@ -27,6 +27,12 @@ class _LoginPageState extends State<LoginPage> {
     Obtener();
   }
 
+  // void dispose() {
+  //   email.dispose();
+  //   password.dispose();
+  //   super.dispose();
+  // }
+
   Future<void> Obtener() async {
     try {
       await _obtenerusuarios.obtenerusuarios();
@@ -34,12 +40,6 @@ class _LoginPageState extends State<LoginPage> {
     } catch (x) {
       throw Exception('Error en metodo:$x');
     }
-  }
-
-  void dispose() {
-    username.dispose();
-    password.dispose();
-    super.dispose();
   }
 
   @override
@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 50.0,
                         ),
                         TextFormField(
-                          controller: username,
+                          controller: email,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.person),
                             label: Text(

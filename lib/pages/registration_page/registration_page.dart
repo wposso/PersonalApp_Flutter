@@ -22,12 +22,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
     });
   }
 
-  void dispose() {
-    emailcontrol.dispose();
-    passcontrol.dispose();
-    confpasscontrol.dispose();
-    super.dispose();
-  }
+  // void dispose() {
+  //   emailcontrol.dispose();
+  //   passcontrol.dispose();
+  //   confpasscontrol.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {

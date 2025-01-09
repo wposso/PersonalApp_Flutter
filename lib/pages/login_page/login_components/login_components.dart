@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ftl/pages/login_page/login_logic/login_logic.dart';
+import 'package:myapp_ftl/pages/registration_page/registration_page.dart';
 import 'package:myapp_ftl/services/login_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-var username = TextEditingController();
+var email = TextEditingController();
 var password = TextEditingController();
 
 bool passwordVisible = true;
@@ -98,7 +99,13 @@ Widget footerText(BuildContext context) {
       ),
       TextButton(
           onPressed: () {
-            Navigator.pushReplacementNamed(context, 'RegistrationPage');
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const RegistrationPage())).then((x) {
+              email.clear();
+              password.clear();
+            });
           },
           child: Text(
             'Create one now.',

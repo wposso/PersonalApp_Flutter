@@ -5,9 +5,14 @@ import 'package:myapp_ftl/pages/login_page/login_components/login_components.dar
 import 'package:myapp_ftl/services/login_service.dart';
 
 void LoginMethod(BuildContext context, ObtenerUsuarios _obtenerusuarios) {
-
-  final enteredEmail = username.text.trim();
+  final enteredEmail = email.text.trim();
   final enteredPass = password.text.trim();
+
+  if (enteredEmail.isEmpty || enteredPass.isEmpty) {
+    mostrarSnackBar(
+        context, 'Please fill in all required fields.', Colors.red, Icons.info);
+    return;
+  }
 
   bool userFound = false;
 
@@ -15,22 +20,17 @@ void LoginMethod(BuildContext context, ObtenerUsuarios _obtenerusuarios) {
     if (user['Email'] == enteredEmail && user['Password'] == enteredPass) {
       userFound = true;
       break;
-    } else if (enteredEmail.isEmpty || enteredPass.isEmpty) {
-      mostrarSnackBar(context, 'Please fill in all required fields.', Colors.red,
-          Icons.close);
-
-      break;
-    } else {
-      mostrarSnackBar(
-          context, 'Invalid credentials, please try again.', Colors.red, Icons.close);
-      break;
     }
   }
 
   if (userFound) {
     mostrarSnackBar(
         context, 'Welcome! Login successful.', Colors.green, Icons.check);
+  } else {
+    mostrarSnackBar(context, 'Invalid credentials, please try again.',
+        Colors.red, Icons.info);
+    return;
   }
-  username.clear();
+  email.clear();
   password.clear();
 }

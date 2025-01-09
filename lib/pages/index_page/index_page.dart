@@ -53,7 +53,7 @@ class _IndexPageState extends State<IndexPage> {
                   const Color.fromRGBO(13, 71, 161, 1),
                   Colors.white,
                   Icons.key,
-                  null),
+                  () {}),
               const SizedBox(
                 height: 15.0,
               ),
@@ -62,10 +62,9 @@ class _IndexPageState extends State<IndexPage> {
                   const Color.fromRGBO(13, 71, 161, 1),
                   Colors.white,
                   Colors.white,
-                  null,
-                  (){
-                    Navigator.pushNamed(context, 'RegistrationPage');
-                  }),
+                  null, () {
+                Navigator.pushNamed(context, 'RegistrationPage');
+              }),
               const SizedBox(
                 height: 50.0,
               ),

@@ -73,9 +73,7 @@ Widget builderButton(String message, Color backcolor, Color forecolor,
         backgroundColor: backcolor,
         foregroundColor: forecolor,
       ),
-      onPressed: () {
-        navigate;
-      },
+      onPressed: navigate,
       child: Row(
         children: [
           Icon(icon),

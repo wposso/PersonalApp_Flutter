@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ftl/pages/login_page/login_components/login_components.dart';
+import 'package:myapp_ftl/pages/login_page/login_page.dart';
 import 'package:myapp_ftl/pages/registration_page/registration_components/registration_components.dart';
 import 'package:myapp_ftl/services/registration_service.dart';
 
@@ -35,7 +36,13 @@ Future<void> Registration(BuildContext context) async {
           TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                Navigator.restorablePushNamed(context, 'LoginPage');
+                Navigator.push(context,
+                        MaterialPageRoute(builder: (x) => const LoginPage()))
+                    .then((x) {
+                  emailcontrol.clear();
+                  passcontrol.clear();
+                  confpasscontrol.clear();
+                });
               },
               child: Text(
                 'Done',
