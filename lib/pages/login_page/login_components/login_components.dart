@@ -1,6 +1,7 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_social_button/flutter_social_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ftl/pages/login_page/login_logic/login_logic.dart';
@@ -19,14 +20,14 @@ void mostrarSnackBar(
     BuildContext context, String message, Color color, IconData icon) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     duration: const Duration(seconds: 3),
-    margin: const EdgeInsets.all(15.0),
+    margin: EdgeInsets.all(15.0.r),
     behavior: SnackBarBehavior.floating,
     backgroundColor: color,
     content: Row(
       children: [
         Text(
           message,
-          style: GoogleFonts.poppins(),
+          style: GoogleFonts.poppins(fontSize: 14.sp),
         ),
         const Spacer(),
         Icon(
@@ -41,14 +42,14 @@ void mostrarSnackBar(
 Widget mostrarDrawer() {
   return Drawer(
     child: Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(10.0.r),
       child: ListView(
         children: const [
           ListTile(
             leading: Icon(Icons.favorite),
             title: Text('Favorite'),
             trailing: Icon(Icons.send),
-          )
+          ),
         ],
       ),
     ),
@@ -58,7 +59,7 @@ Widget mostrarDrawer() {
 var headerContainer = Container(
   decoration: BoxDecoration(color: Colors.blue[900]),
   child: Padding(
-    padding: const EdgeInsets.only(left: 50.0, right: 50.0, bottom: 50.0),
+    padding: EdgeInsets.only(left: 40.r, bottom: 40.r, right: 40.r),
     child: Center(
       child: Column(
         children: [
@@ -66,23 +67,24 @@ var headerContainer = Container(
             decoration: const BoxDecoration(
                 shape: BoxShape.circle, color: Colors.white),
             child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Icon(
-                  Icons.vpn_key,
-                  color: Colors.blue[900],
-                  size: 50.0,
-                )),
+              padding: EdgeInsets.all(15.r),
+              child: Icon(
+                Icons.vpn_key,
+                color: Colors.blue[900],
+                size: 50.r,
+              ),
+            ),
           ),
-          const SizedBox(
-            height: 5.0,
+          SizedBox(
+            height: 10.h,
           ),
           Text(
             'Welcome Back!',
             style: GoogleFonts.poppins(
-                fontSize: 17.0,
+                fontSize: 17.sp,
                 color: Colors.white,
                 fontWeight: FontWeight.bold),
-          )
+          ),
         ],
       ),
     ),
@@ -95,46 +97,51 @@ Widget footerText(BuildContext context) {
     children: [
       Text(
         "Don't have an account?",
-        style: GoogleFonts.poppins(),
+        style: GoogleFonts.poppins(fontSize: 14.sp),
       ),
       TextButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const RegistrationPage())).then((x) {
-              email.clear();
-              password.clear();
-            });
-          },
-          child: Text(
-            'Create one now.',
-            style: GoogleFonts.poppins(
-                fontWeight: FontWeight.bold, color: Colors.blue[900]),
-          ))
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const RegistrationPage())).then((_) {
+            email.clear();
+            password.clear();
+          });
+        },
+        child: Text(
+          'Create one now.',
+          style: GoogleFonts.poppins(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.blue[900]),
+        ),
+      ),
     ],
   );
 }
 
 Widget loginButton(BuildContext context, ObtenerUsuarios _obtenerusuarios) {
   return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          fixedSize: const Size(290.0, 50.0),
-          elevation: 10.0,
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.blue[900],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          )),
-      onPressed: () {
-        LoginMethod(context, _obtenerusuarios);
-      },
-      child: Center(
-        child: Text(
-          'Login',
-          style: GoogleFonts.poppins(fontSize: 18.0),
-        ),
-      ));
+    style: ElevatedButton.styleFrom(
+      fixedSize: Size(290.w, 50.h),
+      elevation: 10.0,
+      foregroundColor: Colors.white,
+      backgroundColor: Colors.blue[900],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.r),
+      ),
+    ),
+    onPressed: () {
+      LoginMethod(context, _obtenerusuarios);
+    },
+    child: Center(
+      child: Text(
+        'Login',
+        style: GoogleFonts.poppins(fontSize: 18.sp),
+      ),
+    ),
+  );
 }
 
 var textLogin = Row(
@@ -142,7 +149,7 @@ var textLogin = Row(
   children: [
     Text(
       'Get Started',
-      style: GoogleFonts.poppins(fontSize: 29.0, fontWeight: FontWeight.bold),
+      style: GoogleFonts.poppins(fontSize: 29.sp, fontWeight: FontWeight.bold),
     ),
   ],
 );
@@ -150,9 +157,10 @@ var textLogin = Row(
 var textInfo = Row(
   mainAxisAlignment: MainAxisAlignment.start,
   children: [
-    Text('Please enter your credentials',
-        style:
-            GoogleFonts.poppins(fontSize: 17.0, fontWeight: FontWeight.w400)),
+    Text(
+      'Please enter your credentials',
+      style: GoogleFonts.poppins(fontSize: 17.sp, fontWeight: FontWeight.w400),
+    ),
   ],
 );
 
@@ -165,12 +173,12 @@ Widget cardSocial(ButtonType button, String url) {
   }
 
   return Card(
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(5.r)),
     ),
     elevation: 10.0,
     child: Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.r),
       child: FlutterSocialButton(
         mini: true,
         buttonType: button,
@@ -185,10 +193,13 @@ Widget cardSocial(ButtonType button, String url) {
 var toolRemind = Row(
   children: [
     Text(
-      'Reminder me nextime',
-      style: GoogleFonts.poppins(),
+      'Reminder me next time',
+      style: GoogleFonts.poppins(fontSize: 14.sp),
     ),
     const Spacer(),
-    Checkbox(value: isCheck, onChanged: (x) {})
+    Checkbox(
+      value: isCheck,
+      onChanged: (x) {},
+    ),
   ],
 );

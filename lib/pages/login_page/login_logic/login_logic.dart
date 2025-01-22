@@ -26,6 +26,7 @@ void LoginMethod(BuildContext context, ObtenerUsuarios _obtenerusuarios) {
   if (userFound) {
     mostrarSnackBar(
         context, 'Welcome! Login successful.', Colors.green, Icons.check);
+    Navigator.pushReplacementNamed(context, 'PositionIndex');
   } else {
     mostrarSnackBar(context, 'Invalid credentials, please try again.',
         Colors.red, Icons.info);

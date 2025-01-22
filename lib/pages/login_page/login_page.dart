@@ -1,12 +1,9 @@
 // ignore_for_file: annotate_overrides, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_social_button/flutter_social_button.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/widgets.dart';
 import 'package:myapp_ftl/pages/login_page/login_components/login_components.dart';
-import 'package:myapp_ftl/pages/login_page/login_logic/login_logic.dart';
 import 'package:myapp_ftl/services/login_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,71 +18,78 @@ class _LoginPageState extends State<LoginPage> {
 
   void initState() {
     super.initState();
+    Obtener();
     password.addListener(() {
       setState(() {});
     });
-    Obtener();
   }
-
-  // void dispose() {
-  //   email.dispose();
-  //   password.dispose();
-  //   super.dispose();
-  // }
 
   Future<void> Obtener() async {
     try {
       await _obtenerusuarios.obtenerusuarios();
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     } catch (x) {
       throw Exception('Error en metodo:$x');
     }
+    return;
   }
+
+  // void dispose() {
+  //   password.removeListener(() {});
+  //   password.dispose(); // Libera los recursos del controlador de texto
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        splitScreenMode: true);
+
     return SafeArea(
       child: Scaffold(
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.blue[900],
           body: Center(
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.r),
                   child: Row(
                     children: [
                       IconButton(
                           onPressed: () {
                             Navigator.pushNamed(context, 'IndexPage');
                           },
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.arrow_back_ios,
                             color: Colors.white,
-                            size: 30.0,
+                            size: 30.r,
                           ))
                     ],
                   ),
                 ),
                 headerContainer,
-                Expanded(
+                Flexible(
                   child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.only(
-                        top: 70.0, left: 20.0, right: 20.0, bottom: 1.0),
-                    decoration: const BoxDecoration(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    padding: EdgeInsets.only(
+                        top: 55.r, left: 20.r, right: 20.r, bottom: 10.r),
+                    decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(50.0))),
+                            BorderRadius.only(topLeft: Radius.circular(50.r))),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         textLogin,
-                        const SizedBox(
-                          height: 10.0,
-                        ),
                         textInfo,
-                        const SizedBox(
-                          height: 50.0,
+                        SizedBox(
+                          height: 35.h,
                         ),
                         TextFormField(
                           controller: email,
@@ -94,16 +98,16 @@ class _LoginPageState extends State<LoginPage> {
                             label: Text(
                               'Email',
                               style: GoogleFonts.poppins(
-                                  fontSize: 15.0, fontWeight: FontWeight.w300),
+                                  fontSize: 15.sp, fontWeight: FontWeight.w300),
                             ),
                             hintText: 'Enter email',
-                            hintStyle: GoogleFonts.poppins(fontSize: 13.0),
+                            hintStyle: GoogleFonts.poppins(fontSize: 13.sp),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0)),
+                                borderRadius: BorderRadius.circular(10.r)),
                           ),
                         ),
-                        const SizedBox(
-                          height: 15.0,
+                        SizedBox(
+                          height: 15.h,
                         ),
                         TextFormField(
                           obscureText: passwordVisible,
@@ -124,21 +128,21 @@ class _LoginPageState extends State<LoginPage> {
                               label: Text(
                                 'Password',
                                 style: GoogleFonts.poppins(
-                                    fontSize: 15.0,
+                                    fontSize: 15.sp,
                                     fontWeight: FontWeight.w300),
                               ),
                               hintText: 'Enter password',
-                              hintStyle: GoogleFonts.poppins(fontSize: 13.0),
+                              hintStyle: GoogleFonts.poppins(fontSize: 13.sp),
                               border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15.0))),
+                                  borderRadius: BorderRadius.circular(10.r))),
                         ),
-                        const SizedBox(
-                          height: 10.0,
+                        SizedBox(
+                          height: 10.h,
                         ),
                         Row(
                           children: [
                             Text(
-                              'Reminder me nextime',
+                              'Remember me next time',
                               style: GoogleFonts.poppins(),
                             ),
                             const Spacer(),
@@ -166,12 +170,12 @@ class _LoginPageState extends State<LoginPage> {
                                 })
                           ],
                         ),
-                        const SizedBox(
-                          height: 70.0,
+                        SizedBox(
+                          height: 60.h,
                         ),
                         loginButton(context, _obtenerusuarios),
-                        const SizedBox(
-                          height: 90.0,
+                        SizedBox(
+                          height: 20.h,
                         ),
                         footerText(context),
                       ],

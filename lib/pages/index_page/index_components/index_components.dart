@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 bool isBack = false;
@@ -13,24 +14,27 @@ var headerLogo = Column(
         shape: BoxShape.circle,
         color: Colors.white,
       ),
-      child: const Padding(
-        padding: EdgeInsets.all(20.0),
+      child: Padding(
+        padding: EdgeInsets.all(20.r),
         child: Center(
           child: Icon(
             Icons.vpn_key_sharp,
-            color: Color.fromRGBO(13, 71, 161, 1),
-            size: 90.0,
+            color: const Color.fromRGBO(13, 71, 161, 1),
+            size: 90.0.r,
           ),
         ),
       ),
     ),
-    const SizedBox(
-      height: 10.0,
+    SizedBox(
+      height: 10.0.r,
     ),
     Text(
       'Welcome Back',
       style: GoogleFonts.poppins(
-          color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold),
+        color: Colors.white,
+        fontSize: 30.sp,
+        fontWeight: FontWeight.bold,
+      ),
     ),
   ],
 );
@@ -42,12 +46,12 @@ var textInfo = Column(
       children: [
         Text(
           'Manage your expenses',
-          style: GoogleFonts.poppins(fontSize: 14.0, color: Colors.white),
+          style: GoogleFonts.poppins(fontSize: 14.0.sp, color: Colors.white),
         ),
       ],
     ),
-    const SizedBox(
-      height: 10.0,
+    SizedBox(
+      height: 10.0.h,
     ),
     Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -55,7 +59,10 @@ var textInfo = Column(
         Text(
           'seamlessly & intuitively',
           style: GoogleFonts.poppins(
-              color: Colors.white, fontSize: 17.0, fontWeight: FontWeight.w600),
+            color: Colors.white,
+            fontSize: 17.0.sp,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ],
     )
@@ -65,27 +72,29 @@ var textInfo = Column(
 Widget builderButton(String message, Color backcolor, Color forecolor,
     Color bordercolor, IconData? icon, VoidCallback? navigate) {
   return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            side: BorderSide(color: bordercolor, width: 2.0)),
-        fixedSize: const Size(300.0, 50.0),
-        backgroundColor: backcolor,
-        foregroundColor: forecolor,
+    style: ElevatedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0.r),
+        side: BorderSide(color: bordercolor, width: 2.0.r),
       ),
-      onPressed: navigate,
-      child: Row(
-        children: [
-          Icon(icon),
-          const SizedBox(
-            width: 30.0,
-          ),
-          Text(
-            message,
-            style: GoogleFonts.poppins(fontSize: 16.0),
-          ),
-        ],
-      ));
+      fixedSize: Size(300.0.w, 50.0.h),
+      backgroundColor: backcolor,
+      foregroundColor: forecolor,
+    ),
+    onPressed: navigate,
+    child: Row(
+      children: [
+        Icon(icon, size: 24.r),
+        SizedBox(
+          width: 30.0.w,
+        ),
+        Text(
+          message,
+          style: GoogleFonts.poppins(fontSize: 16.0.sp),
+        ),
+      ],
+    ),
+  );
 }
 
 Widget textFooter(BuildContext context) {
@@ -94,18 +103,23 @@ Widget textFooter(BuildContext context) {
     children: [
       Text(
         'Already have an account?',
-        style: GoogleFonts.poppins(color: Colors.blue.shade500),
+        style:
+            GoogleFonts.poppins(color: Color.fromARGB(255, 146, 190, 234), fontSize: 14.sp),
       ),
       TextButton(
-          onPressed: () {
-            isBack = true;
-            Navigator.pushNamed(context, 'LoginPage', arguments: true);
-          },
-          child: Text(
-            'Sign in',
-            style: GoogleFonts.poppins(
-                fontWeight: FontWeight.bold, color: Colors.white),
-          ))
+        onPressed: () {
+          isBack = true;
+          Navigator.pushNamed(context, 'LoginPage', arguments: true);
+        },
+        child: Text(
+          'Sign in',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontSize: 14.sp,
+          ),
+        ),
+      )
     ],
   );
 }
@@ -114,15 +128,16 @@ var iconExit = Row(
   mainAxisAlignment: MainAxisAlignment.start,
   children: [
     IconButton(
-        onPressed: () {
-          void closeApp() {
-            SystemNavigator.pop();
-          }
-        },
-        icon: const Icon(
-          Icons.power_settings_new,
-          color: Colors.white,
-          size: 30.0,
-        )),
+      onPressed: () {
+        void closeApp() {
+          SystemNavigator.pop();
+        }
+      },
+      icon: Icon(
+        Icons.exit_to_app,
+        color: Colors.white,
+        size: 30.0.r,
+      ),
+    ),
   ],
 );

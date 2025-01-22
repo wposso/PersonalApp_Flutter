@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ftl/pages/registration_page/registration_logic/registration_logic.dart';
 
@@ -75,7 +76,7 @@ Widget buildTextField(
         hintText: hintText,
         hintStyle: GoogleFonts.poppins(),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(10.r),
         )),
   );
 }
@@ -88,13 +89,13 @@ Widget buildRButton(BuildContext context) {
           backgroundColor: Colors.blue[900],
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0))),
+              borderRadius: BorderRadius.circular(10.r))),
       onPressed: () {
         Registration(context);
       },
       child: Text(
         'Get Started',
-        style: GoogleFonts.poppins(fontSize: 18.0),
+        style: GoogleFonts.poppins(fontSize: 18.sp),
       ));
 }
 
@@ -106,7 +107,7 @@ void mostrarDialog(BuildContext context, String title, Widget actionWidget,
     builder: (context) {
       return AlertDialog(
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
         title: Text(
           title,
           style: GoogleFonts.poppins(),
@@ -137,7 +138,7 @@ var textHeaderInfo = Column(
         Text(
           "Welcome! Let's Create Your Account",
           style:
-              GoogleFonts.poppins(fontSize: 17.0, fontWeight: FontWeight.w500),
+              GoogleFonts.poppins(fontSize: 17.sp, fontWeight: FontWeight.w500),
         )
       ],
     ),
@@ -150,7 +151,7 @@ var textHeaderInfo = Column(
         Text(
           "Enter the required information to proceed.",
           style: GoogleFonts.poppins(
-              fontSize: 14.0, fontWeight: FontWeight.normal),
+              fontSize: 14.sp, fontWeight: FontWeight.normal),
         )
       ],
     ),

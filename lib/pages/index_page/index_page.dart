@@ -1,7 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp_ftl/pages/index_page/index_components/index_components.dart';
 
@@ -16,23 +14,18 @@ class _IndexPageState extends State<IndexPage> {
   late bool isBack = false;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final args = ModalRoute.of(context)!.settings.arguments as bool?;
-    if (args != null) {
-      setState(() {
-        isBack = args;
-      });
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    ScreenUtil.init(
+      context,
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+    );
+
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.blue[900],
       body: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: EdgeInsets.all(30.0.r),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -40,54 +33,58 @@ class _IndexPageState extends State<IndexPage> {
               iconExit,
               const Spacer(),
               headerLogo,
-              const SizedBox(
-                height: 90,
+              SizedBox(
+                height: 50.h,
               ),
               textInfo,
-              const SizedBox(
-                height: 50,
+              SizedBox(
+                height: 30.h,
               ),
               builderButton(
-                  'Sign in with token',
-                  Colors.white,
-                  const Color.fromRGBO(13, 71, 161, 1),
-                  Colors.white,
-                  Icons.key,
-                  () {}),
-              const SizedBox(
-                height: 15.0,
+                'Sign in with token',
+                Colors.white,
+                const Color.fromRGBO(13, 71, 161, 1),
+                Colors.white,
+                Icons.key,
+                () {},
+              ),
+              SizedBox(
+                height: 15.h,
               ),
               builderButton(
-                  'Create an account',
-                  const Color.fromRGBO(13, 71, 161, 1),
-                  Colors.white,
-                  Colors.white,
-                  null, () {
-                Navigator.pushNamed(context, 'RegistrationPage');
-              }),
-              const SizedBox(
-                height: 50.0,
+                'Create an account',
+                const Color.fromRGBO(13, 71, 161, 1),
+                Colors.white,
+                Colors.white,
+                null,
+                () {
+                  Navigator.pushNamed(context, 'RegistrationPage');
+                },
+              ),
+              SizedBox(
+                height: 40.h,
               ),
               textFooter(context),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   IconButton(
-                      onPressed: () {
-                        setState(() {
-                          isBack = !isBack;
-                        });
-                        Navigator.pushNamed(context, 'IndexPage');
-                      },
-                      icon: isBack
-                          ? const Icon(Icons.back_hand)
-                          : const SizedBox.shrink())
+                    onPressed: () {
+                      setState(() {
+                        isBack = !isBack;
+                      });
+                      Navigator.pushNamed(context, 'IndexPage');
+                    },
+                    icon: isBack
+                        ? const Icon(Icons.back_hand)
+                        : const SizedBox.shrink(),
+                  ),
                 ],
               )
             ],
           ),
         ),
       ),
-    ));
+    );
   }
 }
