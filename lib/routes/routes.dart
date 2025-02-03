@@ -1,16 +1,20 @@
 import "package:flutter/material.dart";
+import "package:myapp_ftl/features/login_screen/login_screen.dart";
 import "package:myapp_ftl/main.dart";
-import "package:myapp_ftl/pages/home_page/home_page.dart";
-import "package:myapp_ftl/pages/index_page/index_page.dart";
-import "package:myapp_ftl/pages/login_page/login_page.dart";
-import "package:myapp_ftl/pages/registration_page/registration_page.dart";
-import "package:myapp_ftl/pages/settings_page/settings_page.dart";
+import "package:myapp_ftl/features/contacts_screen/presentation/contacts_screen.dart";
+import "package:myapp_ftl/features/home_screen/presentation/home_screen.dart";
+import "package:myapp_ftl/features/images_screen/presentation/images_screen.dart";
+import "package:myapp_ftl/features/index_screen/presentation/index_screen.dart";
+import "package:myapp_ftl/features/registration_screen/registration_screen.dart";
+import "package:myapp_ftl/features/settings_screen/settings_screen.dart";
 
 Map<String, Widget Function(BuildContext)> routes = {
-  'LoginPage': (context) => const LoginPage(),
-  'IndexPage': (context) => const IndexPage(),
-  'RegistrationPage': (context) => const RegistrationPage(),
-  'HomePage': (context) => const HomePage(),
+  'LoginScreen': (context) => const LoginScreen(),
+  'IndexScreen': (context) => const IndexScreen(),
+  'RegistrationScreen': (context) => const RegistrationScreen(),
+  'HomeScreen': (context) => const HomeScreen(),
   'PositionIndex': (context) => const PositionIndex(),
-  'SettingsPage': (context) => const SettingsPage(),
+  'SettingsScreen': (context) => const SettingsScreen(),
+  'ContactsScreen': (context) => const ContactsScreen(),
+  'ImagesScreen': (context) => const ImagesScreen()
 };

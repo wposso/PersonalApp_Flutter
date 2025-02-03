@@ -5,11 +5,11 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_screenutil/flutter_screenutil.dart";
-import "package:myapp_ftl/global_components/global_components.dart";
-import "package:myapp_ftl/pages/home_page/home_page.dart";
-import "package:myapp_ftl/pages/payment_page/payment_page.dart";
-import "package:myapp_ftl/pages/profile_page/profile_page.dart";
-import "package:myapp_ftl/pages/settings_page/settings_page.dart";
+import "package:myapp_ftl/core/utils/components/components.dart";
+import "package:myapp_ftl/features/home_screen/presentation/home_screen.dart";
+import "package:myapp_ftl/features/payment_screen/presentation/payment_screen.dart";
+import "package:myapp_ftl/features/profile_screen/profile_screen.dart";
+import "package:myapp_ftl/features/settings_screen/settings_screen.dart";
 import "package:myapp_ftl/routes/routes.dart";
 
 void main() {
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'IndexPage',
+        initialRoute: 'IndexScreen',
         routes: routes,
       ),
     );
@@ -59,10 +59,10 @@ class _PositionIndexState extends State<PositionIndex> {
   }
 
   final List<Widget> _pages = [
-    const HomePage(),
-    const ProfilePage(),
-    const PaymentPage(),
-    const SettingsPage()
+    const HomeScreen(),
+    const ProfileScreen(),
+    const PaymentScreen(),
+    const SettingsScreen()
   ];
 
   @override
