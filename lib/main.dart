@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'IndexScreen',
+        initialRoute: '/IndexScreen',
         routes: routes,
       ),
     );
