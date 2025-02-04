@@ -9,12 +9,12 @@ import "package:myapp_ftl/features/registration_screen/registration_screen.dart"
 import "package:myapp_ftl/features/settings_screen/settings_screen.dart";
 
 Map<String, Widget Function(BuildContext)> routes = {
-  'LoginScreen': (context) => const LoginScreen(),
-  'IndexScreen': (context) => const IndexScreen(),
-  'RegistrationScreen': (context) => const RegistrationScreen(),
-  'HomeScreen': (context) => const HomeScreen(),
-  'PositionIndex': (context) => const PositionIndex(),
-  'SettingsScreen': (context) => const SettingsScreen(),
-  'ContactsScreen': (context) => const ContactsScreen(),
-  'ImagesScreen': (context) => const ImagesScreen()
+  '/LoginScreen': (context) => const LoginScreen(),
+  '/IndexScreen': (context) => const IndexScreen(),
+  '/RegistrationScreen': (context) => const RegistrationScreen(),
+  '/HomeScreen': (context) => const HomeScreen(),
+  '/PositionIndex': (context) => const PositionIndex(),
+  '/SettingsScreen': (context) => const SettingsScreen(),
+  '/ContactsScreen': (context) => const ContactsScreen(),
+  '/ImagesScreen': (context) => const ImagesScreen()
 };
