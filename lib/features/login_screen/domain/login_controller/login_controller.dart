@@ -34,8 +34,7 @@ void LoginMethod(BuildContext context, ObtenerUsuarios _obtenerusuarios) {
             const Color.fromRGBO(13, 71, 161, 1), Icons.check);
       }
 
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const PositionIndex()));
+      Navigator.pushReplacementNamed(context, '/PositionIndex');
     });
   } else {
     mostrarSnackBar(context, 'Invalid credentials, please try again.',
@@ -57,7 +56,7 @@ void LogoutMethod(BuildContext context) {
   _logout.logout(getuserid).then((logoutsucess) {
     if (logoutsucess) {
       debugPrint('Sesión cerrada con éxito');
-      Navigator.pushReplacementNamed(context, 'LoginScreen');
+      Navigator.pushReplacementNamed(context, '/LoginScreen');
     } else {
       debugPrint('Error al cerrar sesión');
     }

@@ -109,7 +109,7 @@ Widget textFooter(BuildContext context) {
       TextButton(
         onPressed: () {
           isBack = true;
-          Navigator.pushNamed(context, 'LoginScreen', arguments: true);
+          Navigator.pushNamed(context, '/LoginScreen', arguments: true);
         },
         child: Text(
           'Sign in',

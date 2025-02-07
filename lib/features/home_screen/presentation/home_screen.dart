@@ -79,8 +79,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           TextButton(
                               onPressed: () {
-                                // Navigator.pushReplacementNamed(
-                                //     context, 'LoginPage');
                                 setState(() {
                                   logoutsucess();
                                 });
@@ -146,14 +144,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              buildHomeListTile(() {
-                                Navigator.pushReplacementNamed(
-                                    context, 'ContactsScreen');
-                              }, Icons.people_alt_sharp, 'Manage Contacts',
-                                  'Organize and update your contact list easily'),
-                              SizedBox(
-                                height: 10.r,
-                              ),
+                              // buildHomeListTile(() {
+                              //   Navigator.pushReplacementNamed(
+                              //       context, '/ContactsScreen');
+                              // }, Icons.people_alt_sharp, 'Manage Contacts',
+                              //     'Organize and update your contact list easily'),
+                              // SizedBox(
+                              //   height: 10.r,
+                              // ),
                               buildHomeListTile(
                                   () {},
                                   Icons.image,
@@ -167,11 +165,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Icons.calendar_month,
                                   'Manage Calendar',
                                   'Schedule, view, and update your events effortlessly'),
-                              // SizedBox(
-                              //   height: 10.r,
-                              // ),
-                              // buildHomeListTile(
-                              //     Icons.image, 'Images', 'Manage your images'),
                             ],
                           ),
                         ),

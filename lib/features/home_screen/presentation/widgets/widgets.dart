@@ -154,17 +154,6 @@ Widget buildCardSpace(BuildContext context, String messageA, String messageB,
                   style:
                       GoogleFonts.poppins(fontSize: 12.sp, color: Colors.white),
                 ),
-                // const Spacer(),
-                // Puedes habilitar el PopupMenuButton aquí si es necesario
-                // PopupMenuButton(
-                //     iconSize: 10.r,
-                //     padding: EdgeInsets.zero,
-                //     iconColor: Colors.white,
-                //     itemBuilder: (context) => [
-                //           const PopupMenuItem(child: Text('Download')),
-                //           const PopupMenuItem(child: Text('Upload')),
-                //           const PopupMenuItem(child: Text('Resend')),
-                //         ])
               ],
             ),
             SizedBox(

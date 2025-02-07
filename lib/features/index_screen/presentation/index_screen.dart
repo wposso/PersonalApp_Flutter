@@ -58,7 +58,7 @@ class _IndexScreenState extends State<IndexScreen> {
                 Colors.white,
                 null,
                 () {
-                  Navigator.pushNamed(context, 'RegistrationScreen');
+                  Navigator.pushNamed(context, '/RegistrationScreen');
                 },
               ),
               SizedBox(
@@ -73,7 +73,7 @@ class _IndexScreenState extends State<IndexScreen> {
                       setState(() {
                         isBack = !isBack;
                       });
-                      Navigator.pushNamed(context, 'IndexScreen');
+                      Navigator.pushNamed(context, '/IndexScreen');
                     },
                     icon: isBack
                         ? const Icon(Icons.back_hand)

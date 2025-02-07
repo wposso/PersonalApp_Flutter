@@ -36,12 +36,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return;
   }
 
-  // void dispose() {
-  //   password.removeListener(() {});
-  //   password.dispose(); // Libera los recursos del controlador de texto
-  //   super.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context,
@@ -62,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, 'IndexScreen');
+                            Navigator.pushNamed(context, '/IndexScreen');
                           },
                           icon: Icon(
                             Icons.arrow_back_ios,
